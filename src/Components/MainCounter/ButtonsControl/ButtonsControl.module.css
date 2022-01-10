@@ -8,12 +8,25 @@
     width: 87%;
 }
 .btnActive{
-    border: none;
+    cursor: pointer;
     background-color: var(--aqua);
     color: var(--background);
+    text-decoration: none;
     border-radius: var(--borderRadiusCustom);
-    font-size: 0.6em;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 700;
     padding: 1rem 3rem;
     margin: 0 0.2rem;
+}
+.btnDisabled{
+    cursor: pointer;
+    background-color: var(--aqua);
+    color: var(--background);
+    text-decoration: none;
+    border-radius: var(--borderRadiusCustom);
+    font-size: 30px;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    margin: 0 0.2rem;
+    opacity: 0.5;
 }

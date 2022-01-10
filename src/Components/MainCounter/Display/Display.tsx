@@ -13,7 +13,7 @@ type DisplayPropsType = {
 
 // components
 
-export const Display = ({numberDisplay, maxValue, ...props} : DisplayPropsType) => {
+export const Display = ({numberDisplay, maxValue} : DisplayPropsType) => {
 
     return (
         <div className={s.Display}>
