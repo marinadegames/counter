@@ -1,9 +1,6 @@
 # 🔢 Counter
-## ➕ My counter | React    
+## ➕ My counter | React ##   
 
-
-
-
-### `Updates:`  
+### `Updates:`
 ✅ `v0.0.1` create project
 
