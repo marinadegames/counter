@@ -1,0 +1,17 @@
+.Display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border: 4px solid var(--aqua);
+    border-radius: var(--borderRadiusCustom);
+    width: 87%;
+    height: 90%;
+    margin: 0 0 1rem 0;
+}
+.numStyle{
+    color: var(--aqua);
+}
+.numStyleStop{
+    color: var(--red);
+}
