@@ -16,6 +16,11 @@ type SettingsPropsType = {
 // components
 
 export const Settings = ({onChangeMaxValue, startValue, maxValue, onChangeStartValue}: SettingsPropsType) => {
+
+    const onClickHandler = () => {
+
+    }
+
     return (
         <div className={s.Settings}>
             <div className={s.valueSettings}>
@@ -33,7 +38,7 @@ export const Settings = ({onChangeMaxValue, startValue, maxValue, onChangeStartV
                            value={maxValue}/>
                 </div>
             </div>
-            <NavLink to={'/'} className={s.setValuesButton}>
+            <NavLink to={'/'} className={s.setValuesButton} >
                 set
             </NavLink>
         </div>

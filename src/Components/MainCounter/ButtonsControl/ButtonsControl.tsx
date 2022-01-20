@@ -19,9 +19,6 @@ type ButtonsControlPropsType = {
 // components
 
 export const ButtonsControl = ({increment, reset}: ButtonsControlPropsType) => {
-
-
- debugger
     return (
         <div className={s.ButtonsControl}>
             <div className={s.btnActive}
