@@ -1,15 +1,14 @@
 import React from 'react';
 import s from './App.module.css';
-import {CopyTest} from "./CopyTest";
 import {Counter} from "./Components/Counter";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 
 function App() {
     return (
         <div className={s.App}>
-            <BrowserRouter>
+            <HashRouter>
                 <Counter/>
-            </BrowserRouter>
+            </HashRouter>
         </div>
     );
 }
