@@ -18,12 +18,12 @@ type ButtonsControlPropsType = {
 
 // components
 
-export const ButtonsControl = ({increment, reset}: ButtonsControlPropsType) => {
+export const ButtonsControl = ({increment, reset, ...props}: ButtonsControlPropsType) => {
     return (
         <div className={s.ButtonsControl}>
-            <div className={s.btnActive}
+            <div className={ props.numberDisplay === props.maxValue ? s.btnDisabled : s.btnActive}
                  onClick={increment}>inc</div>
-            <div className={s.btnActive}
+            <div className={ props.numberDisplay === props.startValue ? s.btnDisabled : s.btnActive}
                  onClick={reset}>reset</div>
 
             <NavLink to={'/settings'} className={s.btnActive}>
