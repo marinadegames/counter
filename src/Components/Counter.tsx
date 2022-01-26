@@ -4,6 +4,7 @@ import s from './Counter.module.css'
 import {Route, Routes} from "react-router-dom";
 import {Settings} from "./Settings/Settings";
 import {MainCounter} from "./MainCounter/MainCounter";
+import {start} from "repl";
 
 // assets
 
@@ -17,36 +18,37 @@ export const Counter = () => {
     const [startValue, setStartValue] = useState<number>(0);
     const [endValue, setEndValue] = useState<number>(5);
     const [numberDisplay, setNumberDisplay] = useState<number>(startValue)
+    const [errorStartValue, setErrorStartValue] = useState(false)
+    const [errorEndValue, setErrorEndValue] = useState(false)
 
-    useEffect( () => {
+    useEffect(() => {
         let valueAsString = localStorage.getItem('numberDisplay')
         if (valueAsString) {
             let newValue = JSON.parse(valueAsString)
             setNumberDisplay(newValue)
         }
-    },[])
-    useEffect( () => {
+    }, [])
+    useEffect(() => {
         let valueAsString = localStorage.getItem('startValue')
         if (valueAsString) {
             let newValue = JSON.parse(valueAsString)
             setStartValue(newValue)
         }
-    },[])
-    useEffect( () => {
+    }, [])
+    useEffect(() => {
         let valueAsString = localStorage.getItem('endValue')
         if (valueAsString) {
             let newValue = JSON.parse(valueAsString)
             setEndValue(newValue)
         }
-    },[])
-
-    useEffect( () => {
+    }, [])
+    useEffect(() => {
         localStorage.setItem('numberDisplay', JSON.stringify(numberDisplay))
     }, [numberDisplay])
-    useEffect( () => {
+    useEffect(() => {
         localStorage.setItem('startValue', JSON.stringify(startValue))
     }, [startValue])
-    useEffect( () => {
+    useEffect(() => {
         localStorage.setItem('endValue', JSON.stringify(endValue))
     }, [endValue])
 
@@ -55,12 +57,30 @@ export const Counter = () => {
         if (numberDisplay < endValue) setNumberDisplay(numberDisplay + 1)
     }
     const reset = () => setNumberDisplay(startValue)
-    const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
+
+    const onChangeEndValue = (e: ChangeEvent<HTMLInputElement>) => {
         setEndValue(e.currentTarget.valueAsNumber)
+
     }
+    // if (startValue >= endValue) {
+    // //     // setStartValue(e.currentTarget.valueAsNumber)
+    //     setErrorEndValue(true)
+    // }
+
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
         setStartValue(e.currentTarget.valueAsNumber)
-        setNumberDisplay(startValue)
+        console.log(startValue, '<<>>tartValue')
+        console.log(endValue, '<<endValue')
+        if (e.currentTarget.valueAsNumber >= endValue) {
+            // setStartValue(e.currentTarget.valueAsNumber)
+            // setErrorStartValue(true)
+        }
+
+        if (e.currentTarget.valueAsNumber < endValue){
+            // setStartValue(e.currentTarget.valueAsNumber)
+            setNumberDisplay(startValue)
+            // setErrorStartValue(false)
+        }
     }
 
     return (
@@ -70,12 +90,14 @@ export const Counter = () => {
                                                         reset={reset}
                                                         startValue={startValue}
                                                         increment={increment}
-                                                        maxValue={endValue}/>}/>
-                <Route path={'/settings'} element={<Settings onChangeMaxValue={onChangeMaxValue}
+                                                        endValue={endValue}/>}/>
+                <Route path={'/settings'} element={<Settings onChangeMaxValue={onChangeEndValue}
                                                              startValue={startValue}
                                                              onChangeStartValue={onChangeStartValue}
                                                              reset={reset}
-                                                             maxValue={endValue}/>}/>
+                                                             errorStartValue={errorStartValue}
+                                                             errorMaxValue={errorEndValue}
+                                                             endValue={endValue}/>}/>
             </Routes>
         </div>
     )

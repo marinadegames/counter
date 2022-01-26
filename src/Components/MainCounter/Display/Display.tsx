@@ -8,16 +8,16 @@ import s from './Display.module.css'
 // types
 type DisplayPropsType = {
     numberDisplay: number
-    maxValue:number
+    endValue: number
 }
 
 // components
 
-export const Display = ({numberDisplay, maxValue} : DisplayPropsType) => {
+export const Display = ({numberDisplay, endValue} : DisplayPropsType) => {
 
     return (
         <div className={s.Display}>
-            <div className={ numberDisplay === maxValue ? s.numStyleStop : s.numStyle}>
+            <div className={ numberDisplay === endValue ? s.numStyleStop : s.numStyle}>
                 {numberDisplay}
             </div>
         </div>

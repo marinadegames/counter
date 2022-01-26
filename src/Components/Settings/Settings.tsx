@@ -3,50 +3,53 @@ import React, {ChangeEvent, useEffect, useState} from "react";
 import s from './Settings.module.css'
 import {NavLink} from "react-router-dom";
 
-// assets
+
+// types
 type SettingsPropsType = {
     onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
     startValue: number
-    maxValue: number
+    endValue: number
     reset: () => void
     onChangeStartValue: (e: ChangeEvent<HTMLInputElement>) => void
+    errorStartValue: boolean
+    errorMaxValue: boolean
 }
 
-// types
 
 // components
+export const Settings = (
+    {
+        onChangeMaxValue,
+        startValue,
+        endValue,
+        onChangeStartValue,
+        ...props
+    }: SettingsPropsType) => {
 
-export const Settings = ({onChangeMaxValue, startValue, maxValue, onChangeStartValue, ...props}: SettingsPropsType) => {
 
-    const [errorStartValue, setErrorStartValue] = useState(false)
-    const [errorMaxValue, setErrorMaxValue] = useState(false)
 
-    useEffect( () => {
-
-    }, [])
 
     return (
         <div className={s.Settings}>
             <div className={s.valueSettings}>
-                <div  className={s.div}>
+                <div className={startValue >= endValue ? s.inputError : s.div}>
                     start value:
                     <input type='number'
-                           className={errorStartValue ? s.inputError : ''}
                            onChange={(e) => onChangeStartValue(e)}
                            value={startValue}/>
 
                 </div>
-                <div className={s.div}>
-                    max value:
+                <div className={startValue >= endValue ? s.inputError : s.div}>
+                    end value:
                     <input type='number'
-                           className={errorMaxValue ? '' : ''}
+                           className={props.errorMaxValue ? '' : ''}
                            onChange={(e) => onChangeMaxValue(e)}
-                           value={maxValue}/>
+                           value={endValue}/>
                 </div>
             </div>
-            <NavLink to={'/'}
-                     className={s.setValuesButton}
-                     onClick={props.reset}>
+            <NavLink to={ startValue >= endValue ? '/settings' : '/'}
+                     className={startValue >= endValue ? s.setValuesButtonError : s.setValuesButton}
+                     onClick={startValue >= endValue ? () => {} : props.reset}>
                 set
             </NavLink>
         </div>

@@ -11,7 +11,7 @@ import {NavLink} from "react-router-dom";
 type ButtonsControlPropsType = {
     increment: () => void
     reset: () => void
-    maxValue: number
+    endValue: number
     numberDisplay: number
     startValue: number
 }
@@ -21,7 +21,7 @@ type ButtonsControlPropsType = {
 export const ButtonsControl = ({increment, reset, ...props}: ButtonsControlPropsType) => {
     return (
         <div className={s.ButtonsControl}>
-            <div className={ props.numberDisplay === props.maxValue ? s.btnDisabled : s.btnActive}
+            <div className={ props.numberDisplay === props.endValue ? s.btnDisabled : s.btnActive}
                  onClick={increment}>inc</div>
             <div className={ props.numberDisplay === props.startValue ? s.btnDisabled : s.btnActive}
                  onClick={reset}>reset</div>
