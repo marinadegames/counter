@@ -18,16 +18,27 @@ type MainCounterPropsType = {
 
 // components
 
-export const MainCounter = ({numberDisplay, reset, startValue, increment, endValue}:MainCounterPropsType) => {
+export const MainCounter = (
+    {
+        numberDisplay,
+        reset,
+        startValue,
+        increment,
+        endValue
+    }: MainCounterPropsType) => {
+
     return (
         <div className={s.MainCounter}>
             <Display numberDisplay={numberDisplay}
-                     endValue={endValue}/>
-            <ButtonsControl reset={reset}
-                            startValue={startValue}
-                            increment={increment}
-                            numberDisplay={numberDisplay}
-                            endValue={endValue}/>
+                endValue={endValue}
+            />
+            <ButtonsControl
+                reset={reset}
+                startValue={startValue}
+                increment={increment}
+                numberDisplay={numberDisplay}
+                endValue={endValue}
+            />
         </div>
     )
 }

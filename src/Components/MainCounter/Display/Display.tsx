@@ -13,11 +13,16 @@ type DisplayPropsType = {
 
 // components
 
-export const Display = ({numberDisplay, endValue} : DisplayPropsType) => {
+export const Display = (
+    {
+        numberDisplay,
+        endValue
+    } : DisplayPropsType) => {
 
     return (
         <div className={s.Display}>
-            <div className={ numberDisplay === endValue ? s.numStyleStop : s.numStyle}>
+            <div
+                className={ numberDisplay === endValue ? s.numStyleStop : s.numStyle}>
                 {numberDisplay}
             </div>
         </div>
