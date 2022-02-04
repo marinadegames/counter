@@ -99,3 +99,11 @@
     color: white;
     font-size: 20px;
 }
+.errorMessage{
+    margin: 1rem 0 0 0;
+    font-size: 1rem;
+    color: var(--red);
+}
+.dontErrorMessage{
+    display: none;
+}

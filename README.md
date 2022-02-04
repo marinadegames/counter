@@ -10,4 +10,5 @@
 💻 `v0.0.6` added `git page`  
 🆔 `v0.1.0` added `localStorage`  
 ✒️ `v0.1.1` added `error styles` + other fix  
+🦾 `v0.2.0` project moved to `reducers`
 

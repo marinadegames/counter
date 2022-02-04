@@ -2,7 +2,7 @@
 
 
 // types
-type ActionType = IncrementActionType | ResetNumberDisplay
+type ActionType = IncrementActionType | ResetNumberDisplay | StartValueChangeType | EndValueChangeType
 
 type InitialStateType = {
     numberDisplay: number
@@ -18,11 +18,11 @@ type ResetNumberDisplay = {
 }
 type StartValueChangeType = {
     type: 'START_VALUE_CHANGE',
-    newStartValue: number
+    newNumber: number
 }
 type EndValueChangeType = {
     type: 'END_VALUE_CHANGE',
-    newEndValue: number
+    newNumber: number
 }
 
 
@@ -40,6 +40,10 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
             return {...state, numberDisplay: state.numberDisplay + 1}
         case 'RESET_NUMBER_DISPLAY':
             return {...state, numberDisplay: state.startValue}
+        case "START_VALUE_CHANGE":
+            return {...state, startValue: action.newNumber}
+        case "END_VALUE_CHANGE":
+            return {...state, endValue: action.newNumber}
         default:
             return state
     }
@@ -53,10 +57,10 @@ export const incrementAC = (): IncrementActionType => {
 export const resetNumberDisplayAC = (startValue: number): ResetNumberDisplay => {
     return {type: 'RESET_NUMBER_DISPLAY', startValue} as const
 }
-export const StartValueChangeAC = (newStartValue: number): StartValueChangeType => {
-    return {type: 'START_VALUE_CHANGE', newStartValue} as const
+export const StartValueChangeAC = (newNumber: number): StartValueChangeType => {
+    return {type: 'START_VALUE_CHANGE', newNumber} as const
 }
-export const EndValueChangeAC = (newEndValue: number): EndValueChangeType => {
-    return {type: 'END_VALUE_CHANGE', newEndValue} as const
+export const EndValueChangeAC = (newNumber: number): EndValueChangeType => {
+    return {type: 'END_VALUE_CHANGE', newNumber} as const
 }
 
