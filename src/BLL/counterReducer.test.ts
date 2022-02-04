@@ -1,8 +1,8 @@
 import {
     counterReducer,
     EndValueChangeAC,
-    incrementAC,
-    resetNumberDisplayAC,
+    IncrementAC,
+    ResetNumberDisplayAC,
     StartValueChangeAC
 } from "./counterReducer";
 
@@ -15,7 +15,7 @@ test('INCREMENT', () => {
         endValue: 3,
     }
 
-    const action = incrementAC()
+    const action = IncrementAC()
     const endState = counterReducer(startState, action)
 
     expect(endState.numberDisplay).toBe(startState.numberDisplay + 1)
@@ -28,7 +28,7 @@ test('RESET NUMBER DISPLAY', () => {
         endValue: 3,
     }
 
-    const action = resetNumberDisplayAC(startState.startValue)
+    const action = ResetNumberDisplayAC(startState.startValue)
     const endState = counterReducer(startState, action)
 
     expect(endState.numberDisplay).toBe(startState.startValue)
