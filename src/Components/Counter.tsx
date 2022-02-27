@@ -1,29 +1,23 @@
 // imports
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect} from "react";
 import s from './Counter.module.css'
 import {Route, Routes} from "react-router-dom";
 import {Settings} from "./Settings/Settings";
 import {MainCounter} from "./MainCounter/MainCounter";
-import {start} from "repl";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../BLL/store";
 import {
-    EndValueChangeAC, EndValueTC,
-    IncrementAC,
+    EndValueTC,
     IncrementTC,
-    ResetNumberDisplayAC, ResetNumberDisplayTC,
+    ResetNumberDisplayTC,
     setEndValueFromLocalStorageTC,
     setNumberDisplayFromLocalStorageTC,
     setStartValueFromLocalStorageTC,
-    StartValueChangeAC, StartValueTC
+    StartValueTC
 } from "../BLL/counterReducer";
 
-// assets
-
-// types
 
 // components
-
 export const Counter = () => {
 
     // data
@@ -33,21 +27,22 @@ export const Counter = () => {
 
     // functions
     const dispatch = useDispatch()
-    const increment = () => { if (numberDisplay < endValue) dispatch(IncrementTC()) }
+    const increment = () => {
+        if (numberDisplay < endValue) dispatch(IncrementTC())
+    }
     const reset = () => dispatch(ResetNumberDisplayTC())
 
 
-    // useEffect
-    useEffect( () => {
+    // useEffects
+    useEffect(() => {
         dispatch(setNumberDisplayFromLocalStorageTC())
     }, [])
-    useEffect( () => {
+    useEffect(() => {
         dispatch(setStartValueFromLocalStorageTC())
     }, [])
-    useEffect( () => {
+    useEffect(() => {
         dispatch(setEndValueFromLocalStorageTC())
     }, [])
-
 
 
     // callbacks
@@ -57,7 +52,6 @@ export const Counter = () => {
     const onChangeStartValue = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(StartValueTC(e.currentTarget.valueAsNumber))
     }
-
 
     // return
     return (

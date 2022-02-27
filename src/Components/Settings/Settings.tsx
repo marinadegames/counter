@@ -3,7 +3,6 @@ import React, {ChangeEvent} from "react";
 import s from './Settings.module.css'
 import {NavLink} from "react-router-dom";
 
-
 // types
 type SettingsPropsType = {
     startValue: number
@@ -14,12 +13,8 @@ type SettingsPropsType = {
 
 }
 
-
 // components
 export const Settings = ({ startValue, endValue, onChangeStartValue, onChangeEndValue, ...props }: SettingsPropsType) => {
-
-    // functional
-
 
     // return
     return (
